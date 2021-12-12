@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('./db/connection');
 const apiRoutes = require('./routes/apiRoutes');
+const {startApp} = require('./lib/app.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,3 +24,5 @@ db.connect(err => {
     console.log(`Server running on port  http://localhost:${PORT}`);
   });
 });
+
+startApp();

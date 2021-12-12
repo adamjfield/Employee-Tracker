@@ -5,7 +5,11 @@ const inputCheck = require('../../utils/inputCheck');
 
 // get all roles with departments attached
 router.get('/roles', (req, res) => {
-  const sql = `SELECT roles.*, departments.dept_name AS dept_name FROM roles LEFT JOIN departments ON roles.department_id = departments.id`;
+  const sql = `SELECT r.id, r.title, r.salary, 
+               departments.dept_name AS department 
+               FROM roles r 
+               LEFT JOIN departments 
+               ON r.department_id = departments.id`;
   db.query(sql, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -20,8 +24,34 @@ router.get('/roles', (req, res) => {
 
 // get a single role by id
 router.get('/role/:id', (req, res) => {
-  const sql = `SELECT roles.*, departments.dept_name AS dept_name FROM roles LEFT JOIN departments ON roles.department_id = departments.id WHERE roles.id = ?`;
+  const sql = `SELECT r.id, r.title, r.salary, 
+               departments.dept_name AS department 
+               FROM roles r
+               LEFT JOIN departments 
+               ON r.department_id = departments.id 
+               WHERE r.id = ?`;
   const params = [req.params.id];
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row,
+    });
+  });
+});
+
+/// get a single role by title
+router.get('/role/:title', (req, res) => {
+  const sql = `SELECT r.id, r.title, r.salary, 
+               departments.dept_name AS department 
+               FROM roles r
+               LEFT JOIN departments 
+               ON r.department_id = departments.id 
+               WHERE r.title = ?`;
+  const params = [req.params.title];
   db.query(sql, params, (err, row) => {
     if (err) {
       res.status(500).json({ error: err.message });

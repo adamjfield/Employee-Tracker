@@ -22,11 +22,11 @@ VALUES
 ('Katie', 'Osborn', 2, 1),
 ('Darren', 'Dillard', 2, 1),
 ('Steve', 'Smith', 3, NULL),
-('Chloe', 'Newton', 4, 3),
-('Timothy', 'Lugo', 4, 3),
+('Chloe', 'Newton', 4, 4),
+('Timothy', 'Lugo', 4, 4),
 ('Zach', 'Davis', 5, NULL),
-('Laura', 'Woodcock', 6, 5),
-('Jenna', 'Wilks', 6, 5),
+('Laura', 'Woodcock', 6, 7),
+('Jenna', 'Wilks', 6, 7),
 ('Lindsay', 'Johnson', 7, NULL),
-('Roger', 'Shannon', 8, 7),
-('Teddie', 'Kirby', 8, 7);
+('Roger', 'Shannon', 8, 10),
+('Teddie', 'Kirby', 8, 10);
